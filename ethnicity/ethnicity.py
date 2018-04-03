@@ -66,6 +66,11 @@ class Ethnicity(object):
 
 		print(f'created race dictionary with the likeliest race for {len({s for l in self.RACE_DIC for s in self.RACE_DIC[l]})} surnames')
 
+		# map the included ethnicities to race
+		self.RACE_TO_ETHN = {'asian': ['indian', 'japanese', 'vietnamese', 'chinese', 'korean', 'khmer', 'thai'],
+							 'white': ['greek', 'turkish', 'balkan', 'italian', 'polish'],
+							 'black': ['arabic']}
+
 		self.SEPARATORS = re.compile(r'[-,_/().]')
 		
 		# make name and surname dictionaries by letter for required ethnicities
