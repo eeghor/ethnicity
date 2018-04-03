@@ -1,6 +1,7 @@
 import os
 import json
 from unidecode import unidecode
+import pandas as pd
 
 import re
 import time
@@ -15,7 +16,7 @@ class Ethnicity(object):
 	get ethnicity from name
 	"""
 	
-	def __init__(self):
+	def __init__(self, race_thresh=70):
 
 		self.DATADIR = os.path.join(os.path.curdir, 'data')
 
@@ -30,6 +31,40 @@ class Ethnicity(object):
 
 		self.ETHNIC_ENDINGS_U = json.load(open(os.path.join(self.DATADIR, 'data_surname_end_u_.json'), 'r'))
 		print(f'unique surname endings: {len({n for l in self.ETHNIC_ENDINGS_U for n in self.ETHNIC_ENDINGS_U[l]})}')
+
+		"""
+		create a race dictionary (the US Census data); it should be like this:
+		{'s': defaultdict(None,
+						 {'smith': 'white',
+						  'sanchez': 'latino',
+						  'sullivan': 'white',
+						  'stevens': 'white',
+						  'simpson': 'white'
+		"""
+		self.RACE_DIC = defaultdict(lambda: defaultdict())
+
+		race = {'pctwhite': 'white', 
+				'pctblack': 'black', 
+				'pctapi': 'asian', 
+				'pctaian': 'native', 
+				'pct2prace': 'mixed', 
+				'pcthispanic': 'latino'}
+
+		d = pd.read_csv(os.path.join(self.DATADIR, 'Names_2010Census.csv')).iloc[:,[0,5,6,7,8,9,10]].dropna()
+		d['name'] = d['name'].str.lower()
+		d.iloc[:,1:] = d.iloc[:,1:].applymap(lambda x: 0.0 if not str(x).replace('.','').isdigit() else x)
+		d['max'] = d.iloc[:,1:].astype(float).max(axis=1)
+		d['race'] = (d.iloc[:,1:-1].astype(float).idxmax(axis=1)
+					.where(d['max'] > race_thresh, None)
+					 .apply(lambda x: race.get(x, None)))
+		d.drop('max', axis=1, inplace=True)
+		d = d[d['race'].notnull()]
+
+		for r in d.iterrows():
+			_name = r[1]['name']
+			self.RACE_DIC[_name[0]][_name] = r[1]['race']
+
+		print(f'created race dictionary with the likeliest race for {len({s for l in self.RACE_DIC for s in self.RACE_DIC[l]})} surnames')
 
 		self.SEPARATORS = re.compile(r'[-,_/().]')
 		
@@ -143,5 +178,6 @@ class Ethnicity(object):
 
 if __name__ == '__main__':
 
-	e = Ethnicity()
+	e = Ethnicity(race_thresh=67.5)
+
 	print(e.get('alingoglu akio 0&&& '))
