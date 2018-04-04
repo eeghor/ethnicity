@@ -8,8 +8,6 @@ import time
 from collections import defaultdict
 from string import ascii_lowercase
 
-
-
 class Ethnicity(object):
 
 	"""
@@ -76,6 +74,35 @@ class Ethnicity(object):
 		# make name and surname dictionaries by letter for required ethnicities
 		self.names = dict()
 		self.surnames = dict()
+
+	def __readtext(self, file):
+		"""
+		read from a text file line by line
+		"""
+		return {unidecode(l.strip()) for l in open(os.path.join(self.DATADIR, file),'r').readlines() if l.strip()}
+
+	def setup(self):
+
+		d = defaultdict(lambda: defaultdict())
+
+		for e in self.ETHNICITIES:
+
+			if e in {'indian', 'japanese', 'greek'}:
+
+				for _ in 'full_names first_names last_names last_names_common'.split():
+
+					try:
+						recs = self.__readtext(f'{e}/{_}/{_}_.txt')
+						d[e][_] = list(recs)
+					except:
+						print(f'warning: can\'t find {e} {_}!')		
+
+				print(f'ethnicity: {e}')
+				for what in d[e]:
+					print(f'{what}: {len(d[e][what])}')		
+
+		return self
+
 
 		
 	def _normalize(self, st):
@@ -183,6 +210,6 @@ class Ethnicity(object):
 
 if __name__ == '__main__':
 
-	e = Ethnicity(race_thresh=67.5)
+	e = Ethnicity(race_thresh=67.5).setup()
 
 	print(e.get('alingoglu akio 0&&& '))
