@@ -87,7 +87,7 @@ class Ethnicity(object):
 
 		for e in self.ETHNICITIES:
 
-			if e in {'indian', 'japanese', 'greek'}:
+			if e in {'indian', 'japanese', 'greek', 'arabic', 'turkish', 'thai', 'vietnamese', 'balkan', 'italian', 'samoan'}:
 
 				for _ in 'full_names first_names last_names last_names_common'.split():
 
