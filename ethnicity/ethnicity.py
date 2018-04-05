@@ -18,9 +18,11 @@ class Ethnicity(object):
 
 		self.DATADIR = os.path.join(os.path.curdir, 'data')
 
-		self.ETHNICITIES = """indian japanese greek arabic turkish
+		self.ETHNICITIES = set("""indian japanese greek arabic turkish
 									thai vietnamese balkan italian samoan
-										hawaiian khmer chinese korean polish""".split()
+										hawaiian khmer chinese korean polish""".split())
+		
+		assert self.ETHNICITIES <= set(os.listdir(self.DATADIR)), '** error ** data is missing for some ethnicities!'
 
 		print(f'ethnicities: {len(self.ETHNICITIES)}')
 		
@@ -87,19 +89,17 @@ class Ethnicity(object):
 
 		for e in self.ETHNICITIES:
 
-			if e in {'indian', 'japanese', 'greek', 'arabic', 'turkish', 'thai', 'vietnamese', 'balkan', 'italian', 'samoan'}:
+			for _ in 'full_names first_names last_names last_names_common'.split():
 
-				for _ in 'full_names first_names last_names last_names_common'.split():
+				try:
+					recs = self.__readtext(f'{e}/{_}/{_}_.txt')
+					d[e][_] = list(recs)
+				except:
+					print(f'warning: can\'t find {e} {_}!')		
 
-					try:
-						recs = self.__readtext(f'{e}/{_}/{_}_.txt')
-						d[e][_] = list(recs)
-					except:
-						print(f'warning: can\'t find {e} {_}!')		
-
-				print(f'ethnicity: {e}')
-				for what in d[e]:
-					print(f'{what}: {len(d[e][what])}')		
+			print(f'ethnicity: {e}')
+			for what in d[e]:
+				print(f'{what}: {len(d[e][what])}')		
 
 		return self
 

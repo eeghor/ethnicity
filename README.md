@@ -7,4 +7,5 @@ Get ethnicity from name
 * [Most common Indian surnames](https://www.quora.com/What-are-some-of-the-most-common-Indian-last-names)
 * [Most common Greek surnames](https://chartcons.com/common-greek-last-names/)
 * [Most common Italian surnames](http://www.italianames.com/italian-last-names.php)
-* [Samoan last names](https://www.quora.com/What-are-some-Samoan-last-names)
+* [Samoan surnames](https://www.quora.com/What-are-some-Samoan-last-names)
+* [Hawaiian surnames](https://en.wiktionary.org/wiki/Category:Hawaiian_surnames)
