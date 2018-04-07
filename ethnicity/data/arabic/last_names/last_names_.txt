@@ -18,37 +18,50 @@ adib
 adil
 adwan
 ahad
-al ahdal
 ahmad
 ahmadi
 ahmar
 ahsan
-al ajlani
 akif
 akkad
 akram
+al ahdal
+al ajlani
+al amili
+al amuli
+al andalusi
+al asiri
+al atrash
+al azm
+al balawi
 al bariqi
+al bishi
+al dimashqi
+al enezi
+al farsi
+al fasi
+al fayed
+al ghamdi
+al hamdan
+al harthi
+al hawwash
+al hazmi
 al mubarak
 alam
 alavi
 alim
 allaf
-al amili
 amri
-al amuli
-al andalusi
 anwar
 arazi
 asad
 asem
 ashhad
-al asiri
 assan
 atassi
 atif
 atiq
 atiyah
-al atrash
 atwan
 atwi
 aulaqi
@@ -58,7 +71,6 @@ ayad
 azim
 azimi
 aziz
-al azm
 badat
 badawi
 badri
@@ -68,18 +80,15 @@ bahjat
 bahri
 bakir
 bakkal
-al balawi
 barakat
 barghouti
 bashar
 basri
-el baz
 ben yahia
 benaldjia
 benayoun
 benyamina
 bilel
-al bishi
 bouazizi
 bouhouche
 boulos
@@ -88,7 +97,7 @@ boutros
 bseiso
 bukhari
 burhan
-chahuán
+chahuan
 chakroun
 chatti
 damji
@@ -97,9 +106,8 @@ daou
 darbi
 darwish
 dawoud
-al dimashqi
 ebeid
-al enezi
+el baz
 entezam
 erakat
 fadel
@@ -112,15 +120,11 @@ farhat
 farhi
 farooq
 farrugia
-al farsi
-al fasi
 fasih
 fawzi
-al fayed
 fazil
 gazzah
 ghali
-al ghamdi
 ghanem
 ghannouchi
 ghazali
@@ -139,7 +143,6 @@ hamadani
 hamam
 hamawi
 hamdan
-al hamdan
 hamdani
 hamdi
 hamdouchi
@@ -149,7 +152,6 @@ hamidou
 handal
 hannachi
 hariri
-al harthi
 hashem
 hasnawi
 hassan
@@ -158,10 +160,8 @@ hatem
 hawass
 hawi
 hawsawi
-al hawwash
 hayek
 hazazi
-al hazmi
 hegazi
 henein
 hijazi

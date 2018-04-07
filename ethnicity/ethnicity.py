@@ -83,7 +83,15 @@ class Ethnicity(object):
 		"""
 		return {unidecode(l.strip()) for l in open(os.path.join(self.DATADIR, file),'r').readlines() if l.strip()}
 
-	def setup(self):
+	def __writetext(self, what, file):
+		"""
+		write what to a text file
+		"""
+		with open(os.path.join(self.DATADIR, file),'w') as f:
+			for _ in sorted(list(what)):
+				f.write(f'{unidecode(_.strip())}\n')
+
+	def _make_name_dict(self, refresh=True):
 
 		d = defaultdict(lambda: defaultdict())
 
@@ -92,16 +100,38 @@ class Ethnicity(object):
 			for _ in 'full_names first_names last_names last_names_common'.split():
 
 				try:
-					recs = self.__readtext(f'{e}/{_}/{_}_.txt')
-					d[e][_] = list(recs)
+					f = f'{e}/{_}/{_}_.txt'
+					if refresh:
+						self.__writetext(self.__readtext(f), f)
+					d[e][_] = list(self.__readtext(f))
 				except:
 					print(f'warning: can\'t find {e} {_}!')		
 
-			print(f'ethnicity: {e}')
-			for what in d[e]:
-				print(f'{what}: {len(d[e][what])}')		
+		return d
+
+	def setup(self):
+
+		d = self._make_name_dict()
+
+		du = defaultdict(lambda: defaultdict(list))
+		dx = defaultdict(lambda: defaultdict(set))
+
+		for e in d:
+			for n in d[e]['first_names']:
+				du[n[0]][n].append(e)
+
+		for e in d:
+			if 'last_names' in d[e]:
+				for n in d[e]['last_names']:
+					for s in range(3,6):
+						_ = n[-s:]
+						dx[_[0]][_].add(e)
+
+		self.ETHNIC_NAMES_U = du
+		self.ETHNIC_ENDINGS_U = dx
 
 		return self
+
 
 
 		
@@ -171,7 +201,7 @@ class Ethnicity(object):
 		else:
 			# ignore the middle
 			_name = _words[0]
-			_surname = words[-1]
+			_surname = _words[-1]
 
 		if _name and len(_name) < 2:
 			_name = None
@@ -212,4 +242,4 @@ if __name__ == '__main__':
 
 	e = Ethnicity(race_thresh=67.5).setup()
 
-	print(e.get('alingoglu akio 0&&& '))
+	print(e.get('mr sayed bhurizi'))

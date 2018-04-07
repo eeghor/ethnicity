@@ -371,7 +371,6 @@ archita
 ardhendu
 areet
 arhan
-arhan
 arihant
 arima
 arindam
@@ -1719,9 +1718,7 @@ mann
 manohar
 manovir
 manpal
-manpal
 manparteet
-manpaul
 manpaul
 manpreet
 manraj
@@ -2343,7 +2340,6 @@ rakthi
 raman
 ramanan
 ramandeep
-ramani
 ramani
 ramaraj
 ramayan
@@ -3078,7 +3074,6 @@ sunayana
 sundaresha
 sunpreet
 sunrita
-sunrita
 sunu
 supragya
 supritha
@@ -3181,7 +3176,6 @@ tarani
 tarin
 tarique
 tarsame
-tarun
 tarun
 tarush
 tarz
@@ -3323,7 +3317,6 @@ vallabhbhai
 vamsi
 vandana
 vandani
-vani
 vani
 vaniskha
 vanita

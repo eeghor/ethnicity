@@ -239,7 +239,6 @@ arialdo
 ariano
 ariela
 ariele
-ariele
 ariodante
 aris
 aristarco
@@ -684,7 +683,6 @@ dalmazio
 damaso
 damina
 danae
-danae
 danieletta
 daniello
 danila
@@ -696,7 +694,6 @@ decenzia
 decenzio
 decia
 decimo
-decio
 decio
 dedalo
 dederica
@@ -803,7 +800,6 @@ eletta
 elettro
 eleuteria
 elga
-elia
 elia
 eliah
 eliano
@@ -1136,14 +1132,12 @@ gigia
 gigliola
 giliante
 gilla
-gilla
 gimignano
 gimilian
 gimiliana
 ginepra
 ginepro
 ginetta
-gio
 gio
 gioacchina
 gioberto
@@ -1409,7 +1403,6 @@ lionella
 lionello
 lisabeta
 lisabetta
-lisandra
 lisandra
 lisandrina
 lisandru

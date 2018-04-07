@@ -629,7 +629,6 @@ oura
 ovgu
 ovgun
 ovunc
-ovunc
 oya
 oyku
 oylum
@@ -667,7 +666,6 @@ renk
 resat
 resul
 roksan
-rumeysa
 rumeysa
 ruya
 ruzgar
@@ -830,6 +828,7 @@ turkan
 turkuvaz
 tzennet
 ucgul
+udur
 uilyam
 ulas
 ulker
@@ -837,7 +836,6 @@ ulug
 umay
 urooj
 ustun
-udur
 utkan
 uygar
 uzay

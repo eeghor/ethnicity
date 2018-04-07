@@ -124,7 +124,6 @@ akika
 akimasa
 akimi
 akimitsu
-akimitsu
 akina
 akine
 akino
@@ -360,7 +359,6 @@ atsuo
 atsuro
 atsurou
 atsushi
-atsushi
 atsusuke
 atsutaka
 atsutake
@@ -594,7 +592,6 @@ chiyomaru
 chiyomi
 chiyono
 chiyonosuke
-chiyori
 chiyori
 chiyoshi
 chiyosuke
@@ -858,7 +855,6 @@ fusanosuke
 futaba
 futao
 futoshi
-futoshi
 fuu
 fuue
 fuuga
@@ -989,7 +985,6 @@ hakuryu
 hakuto
 hama
 hamako
-hamoni
 hamoni
 hanabi
 hanabiko
@@ -1366,7 +1361,6 @@ ichika
 ichiki
 ichiko
 ichimaru
-ichimaru
 ichimi
 ichine
 ichiniko
@@ -1573,7 +1567,6 @@ jun
 juna
 jungo
 junichirou
-junichirou
 junji
 junjou
 junka
@@ -1590,7 +1583,6 @@ junta
 juntarou
 junto
 junya
-junya
 juri
 juria
 jurian
@@ -1601,8 +1593,6 @@ juriko
 jurina
 jurota
 jushiro
-jutaro
-jutaro
 jutaro
 juutarou
 juuzou
@@ -1699,7 +1689,6 @@ kakari
 kakere
 kakeru
 kako
-kaku
 kaku
 kakuko
 kakuzu
@@ -1813,7 +1802,6 @@ katsura
 katsurako
 katsurao
 katsutoshi
-katsuya
 katsuya
 katsuyoshi
 katsuyuki
@@ -2109,12 +2097,10 @@ kiyoyoshi
 kiyumi
 kizuna
 ko
-ko
 koai
 koaki
 koatsu
 koba
-kodai
 kodai
 koei
 koeri
@@ -2134,7 +2120,6 @@ kohshiroh
 koi
 koibito
 koichi
-koichi
 koiko
 koiku
 koishi
@@ -2146,7 +2131,6 @@ kojurou
 kojuuro
 kojuurou
 kokage
-koki
 koki
 kokimi
 koko
@@ -2244,7 +2228,6 @@ kotose
 kotowa
 kotoya
 kotoyo
-kou
 kou
 koubai
 koubei
@@ -2369,7 +2352,6 @@ kyashi
 kyohei
 kyojin
 kyoka
-kyoko
 kyoko
 kyona
 kyono
@@ -2578,7 +2560,6 @@ masazou
 mashiro
 mashu
 mashuu
-masu
 masu
 masue
 masuhiko
@@ -2791,7 +2772,6 @@ minato
 minatoko
 minatsu
 mine
-mine
 mineka
 mineko
 minene
@@ -2814,7 +2794,6 @@ miono
 miori
 mioto
 mira
-mirai
 mirai
 mirakuru
 miran
@@ -3157,7 +3136,6 @@ nashi
 nata
 natane
 natari
-natari
 natasha
 nato
 natsu
@@ -3430,7 +3408,6 @@ raama
 rabu
 rabuno
 raburi
-raburi
 raga
 raho
 rai
@@ -3557,7 +3534,6 @@ rennosuke
 reno
 renoa
 renon
-renon
 renona
 renren
 renri
@@ -3632,7 +3608,6 @@ rinako
 rine
 rinea
 ringo
-rini
 rini
 rinichi
 rinji
@@ -3829,11 +3804,9 @@ ryuhito
 ryuichi
 ryuji
 ryuko
-ryuko
 ryunosuke
 ryusei
 ryusuke
-ryuta
 ryuta
 ryutaro
 ryuto
@@ -4027,8 +4000,6 @@ sayane
 sayano
 sayato
 sayo
-sayo
-sayoko
 sayoko
 sayomi
 sayori
@@ -4134,7 +4105,6 @@ shichirota
 shichirouzaemon
 shichirouzan
 shido
-shido
 shiemi
 shien
 shiena
@@ -4173,7 +4143,6 @@ shimizu
 shimo
 shimon
 shina
-shina
 shinami
 shinba
 shinderera
@@ -4184,7 +4153,6 @@ shinichi
 shinichiro
 shinigami
 shininome
-shinji
 shinji
 shinjirou
 shinjitsu
@@ -4208,7 +4176,6 @@ shinta
 shintaro
 shintarou
 shinto
-shinya
 shinya
 shinzaemon
 shinzo
@@ -4724,7 +4691,6 @@ tome
 tomejiro
 tomeo
 tomi
-tomi
 tomiju
 tomino
 tomio
@@ -4768,11 +4734,9 @@ torashi
 torasuke
 torato
 tori
-tori
 torii
 toriko
 torishia
-toru
 toru
 toshi
 toshiaki
@@ -4790,7 +4754,6 @@ toshina
 toshinobu
 toshinosuke
 toshio
-toshiro
 toshiro
 toshisuke
 toshiya
@@ -4829,7 +4792,6 @@ tsudzumi
 tsudzuna
 tsudzuri
 tsugiko
-tsuguko
 tsuguko
 tsugumi
 tsuguo
@@ -5152,7 +5114,6 @@ yoshizo
 yoshizou
 yosora
 yosuke
-yosuke
 yota
 yotsuba
 yotsuha
@@ -5201,7 +5162,6 @@ yuisayaka
 yuito
 yuji
 yuka
-yuka
 yukako
 yukari
 yukariko
@@ -5248,8 +5208,6 @@ yukiyo
 yukiyoshi
 yukizono
 yuma
-yuma
-yuma
 yumako
 yume
 yumea
@@ -5285,7 +5243,6 @@ yunako
 yuni
 yuniko
 yuno
-yuno
 yunoka
 yunon
 yunosuke
@@ -5301,7 +5258,6 @@ yuriha
 yurihiko
 yurika
 yurikako
-yuriko
 yuriko
 yurime
 yurimi
@@ -5322,7 +5278,6 @@ yusaku
 yusano
 yusei
 yushi
-yusuke
 yusuke
 yusurako
 yuta

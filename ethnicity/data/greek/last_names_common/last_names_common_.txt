@@ -1,5 +1,5 @@
 adamos
-aetós
+aetos
 alexandropoulos
 alexopoulos
 andino
@@ -9,7 +9,7 @@ angelopoulos
 angelos
 ariti
 artino
-balaska 
+balaska
 balaskas
 chloros
 christodoulopoulos
@@ -22,8 +22,8 @@ diakos
 diamandis
 diamantopoulos
 dimitriadis
-dimitropoulos
 dimitrios
+dimitropoulos
 doukas
 dukakis
 economos
@@ -50,8 +50,8 @@ levidis
 louis
 loukanis
 lykaios
-manikas
 mandrapilias
+manikas
 markopoulos
 martinos
 masalis
