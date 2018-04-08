@@ -20,7 +20,7 @@ class Ethnicity(object):
 
 		self.ETHNICITIES = set("""indian japanese greek arabic turkish
 									thai vietnamese balkan italian samoan
-										hawaiian khmer chinese korean polish""".split())
+										hawaiian khmer chinese korean polish fijian""".split())
 		
 		assert self.ETHNICITIES <= set(os.listdir(self.DATADIR)), '** error ** data is missing for some ethnicities!'
 
@@ -163,7 +163,7 @@ class Ethnicity(object):
 		"""
 		find unique name or surname by letter
 		"""
-		assert what in 'name surname_ending'.split(), f'function _by_letter must receive a valid what value!'
+		assert what in 'name surname_ending race'.split(), f'function _by_letter must receive a valid what value!'
 
 		if what == 'name':	
 
@@ -186,6 +186,14 @@ class Ethnicity(object):
 					return self.ETHNIC_ENDINGS_U[_l1][_]
 				except:
 					continue
+
+		elif what == 'race':
+
+			try:
+				return self.RACE_DIC[name[0]].get(name, None)
+			except:
+				return None
+
 
 	def _split_name_surname(self, st):
 		"""
@@ -212,14 +220,20 @@ class Ethnicity(object):
 
 		_name, _surname = name, surname
 
+		print('_surname=',_surname)
+
 		if _name:
 			eth_unique_name = self._by_letter(_name, 'name')
 			if eth_unique_name:
 				return eth_unique_name
+
 		if _surname:
 			eth_surn_ending = self._by_letter(_surname, 'surname_ending')
+			rc = self._by_letter(_surname, 'race')
+			print('rc=', rc)
 			if eth_surn_ending:
 				return eth_surn_ending
+
 	
 	def get(self, st):
 
@@ -235,6 +249,8 @@ class Ethnicity(object):
 		if not ethnicity:
 			ethnicity = self._find_unique(_surname, _name)
 
+		self._find_unique(_name, _surname)
+
 		return ethnicity
 				
 
@@ -242,4 +258,4 @@ if __name__ == '__main__':
 
 	e = Ethnicity(race_thresh=67.5).setup()
 
-	print(e.get('mr sayed bhurizi'))
+	print(e.get('apaitia manfreddini'))
