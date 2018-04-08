@@ -20,7 +20,7 @@ class Ethnicity(object):
 
 		self.ETHNICITIES = set("""indian japanese greek arabic turkish
 									thai vietnamese balkan italian samoan
-										hawaiian khmer chinese korean polish fijian""".split())
+										hawaiian khmer chinese korean polish fijian english""".split())
 		
 		assert self.ETHNICITIES <= set(os.listdir(self.DATADIR)), '** error ** data is missing for some ethnicities!'
 
@@ -258,4 +258,4 @@ if __name__ == '__main__':
 
 	e = Ethnicity(race_thresh=67.5).setup()
 
-	print(e.get('apaitia manfreddini'))
+	print(e.get('apaitia hodgson'))
