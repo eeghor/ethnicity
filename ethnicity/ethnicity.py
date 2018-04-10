@@ -96,22 +96,28 @@ class Ethnicity(object):
 					if name in d[e]:
 						pick_idx = -1 if (name == 'last_names') else 0
 						lst = [full_name.split()[pick_idx] for full_name in d[e]['full_names']]
-						for _ in Counter(lst).most_common(math.floor(0.8*len(lst))):
-							name_ = _[0]
+						for name_, count in Counter(lst).most_common(math.floor(0.8*len(lst))):
 							if name == 'last_names':
-								if _[1] > 1:
+								if count > 1:
 									self.ETHNIC_SURNAMES_U[name_[0]][name_].add(e)
 							elif name == 'first_names':
-								if _[1] > 3:
+								if count > 2:
 									self.ETHNIC_NAMES_U[name_[0]][name_].add(e)
 
-			# dictionary for surname endings
-			for l in self.ETHNIC_SURNAMES_U:
-				for n in self.ETHNIC_SURNAMES_U[l]:
-					for s in range(3,6):  # note: 3,4,5
-						_ = n[-s:]
-						self.ETHNIC_ENDINGS_U[_[0]][_].add(e)
-		
+			# if common surnames are available, simply add them all
+			try:
+				for sur in d[e]['last_names_common']:
+					self.ETHNIC_SURNAMES_U[sur[0]][sur].add(e)
+			except:
+				pass
+
+		# dictionary for surname endings
+		for l in self.ETHNIC_SURNAMES_U:
+			for n in self.ETHNIC_SURNAMES_U[l]:
+				for s in range(3,6):  # note: 3,4,5
+					_ = n[-s:]
+					self.ETHNIC_ENDINGS_U[_[0]][_].update(self.ETHNIC_SURNAMES_U[l][n])
+	
 
 		# create a race dictionary like 
 		# {'d': {'david': 'white', 'diego': 'latino'}}
@@ -289,4 +295,4 @@ if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	print(e.get('matthias novak'))
+	print(e.get('jona whittaker'))
