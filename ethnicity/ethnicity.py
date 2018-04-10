@@ -21,7 +21,7 @@ class Ethnicity(object):
 
 		self.ETHNICITIES = set("""indian japanese greek arabic turkish
 									thai vietnamese balkan italian samoan
-										hawaiian khmer chinese korean polish fijian english german""".split())
+										hawaiian khmer chinese korean polish fijian english german spanish""".split())
 		
 		assert self.ETHNICITIES <= set(os.listdir(self.DATADIR)), '** error ** data is missing for some ethnicities!'
 
@@ -30,7 +30,8 @@ class Ethnicity(object):
 		# map the included ethnicities to race
 		self.RACE_TO_ETHN = {'asian': ['indian', 'japanese', 'vietnamese', 'chinese', 'korean', 'khmer', 'thai'],
 							 'white': ['greek', 'turkish', 'balkan', 'italian', 'polish', 'english', 'german'],
-							 'black': ['arabic']}
+							 'black': ['arabic'],
+							 'latino': ['spanish']}
 		
 		self.SEPARATORS = re.compile(r'[-,_/().]')
 
@@ -295,4 +296,4 @@ if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	print(e.get('jona whittaker'))
+	print(e.get('carlos sanchez'))
