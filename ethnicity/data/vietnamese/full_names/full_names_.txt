@@ -1,8 +1,3 @@
-"jung nguyen park, taoist"
-"lam nhat tien, singer"
-"lam phuong, composer"
-"nguyen van thuan, cardinal"
-"thich quang duc, buddhist"
 a hoang
 a mit
 a san
@@ -213,6 +208,7 @@ huynh tuan linh
 huynh van li
 huynh van thanh
 jean dinh van
+jung nguyen
 khanh ly
 khoi my
 khong thanh tu
@@ -227,6 +223,8 @@ lai thi tuyet
 lai tuan vu
 lam an do
 lam anh quang
+lam nhat tien
+lam phuong
 lam qui
 lam ti phong
 lam van ngoan
@@ -546,6 +544,7 @@ nguyen van quang
 nguyen van quyet
 nguyen van thang
 nguyen van thanh
+nguyen van thuan
 nguyen van toan
 nguyen van viet
 nguyen van vinh
@@ -671,6 +670,7 @@ thi thuy trinh vo
 thich nhat hanh
 thich nhat tu
 thich quang do
+thich quang duc
 thich thanh tu
 thien le
 thuy diep
