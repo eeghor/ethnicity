@@ -21,7 +21,7 @@ class Ethnicity(object):
 
 		self.ETHNICITIES = set("""indian japanese greek arabic turkish
 									thai vietnamese balkan italian samoan
-										hawaiian khmer chinese korean polish fijian english german spanish""".split())
+										hawaiian khmer chinese korean polish fijian english german spanish portuguese""".split())
 		
 		assert self.ETHNICITIES <= set(os.listdir(self.DATADIR)), '** error ** data is missing for some ethnicities!'
 
@@ -29,7 +29,7 @@ class Ethnicity(object):
 
 		# map the included ethnicities to race
 		self.RACE_TO_ETHN = {'asian': ['indian', 'japanese', 'vietnamese', 'chinese', 'korean', 'khmer', 'thai'],
-							 'white': ['greek', 'turkish', 'balkan', 'italian', 'polish', 'english', 'german'],
+							 'white': ['greek', 'turkish', 'balkan', 'italian', 'polish', 'english', 'german', 'portuguese'],
 							 'black': ['arabic'],
 							 'latino': ['spanish']}
 		
@@ -48,6 +48,18 @@ class Ethnicity(object):
 		with open(os.path.join(self.DATADIR, file),'w') as f:
 			for _ in sorted(list(what)):
 				f.write(f'{unidecode(_.strip())}\n')
+
+	def __writejson(self, dic, file):
+		"""
+		write a dictionary that has set entries to json
+		"""
+		dic_ = defaultdict(lambda: defaultdict(list))
+		for l in dic:
+			for _ in dic[l]:
+				dic_[l][_] = list(dic[l][_])
+
+		json.dump(dic_, open(file, 'w'))
+
 
 	def make_dicts(self, refresh=True):
 		"""
@@ -147,6 +159,12 @@ class Ethnicity(object):
 			self.RACE_DIC[_name[0]][_name] = r[1]['race']
 
 		
+		self.__writejson(self.ETHNIC_NAMES_U, 'dic_names_.json')
+		self.__writejson(self.ETHNIC_SURNAMES_U, 'dic_surnames_.json')
+		self.__writejson(self.ETHNIC_ENDINGS_U, 'dic_sur_endings_.json')
+
+		json.dump(self.RACE_DIC, open('dic_race_.json','w'))
+
 		return self
 	
 	def _normalize(self, st):
@@ -189,7 +207,15 @@ class Ethnicity(object):
 		"""
 		find word in the surname ending dictionary (arranged by letter)
 		"""
-		return self.ETHNIC_ENDINGS_U[word[0]].get(word, None)
+		found = set()
+
+		for n in range(3,6):
+			_ = word[-n:]
+			ethnicity_set = self.ETHNIC_ENDINGS_U[_[0]].get(_, None)
+			if ethnicity_set:
+				found.update(ethnicity_set)
+
+		return found
 
 	def search_race(self, word):
 		"""
@@ -296,4 +322,4 @@ if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	print(e.get('carlos sanchez'))
+	print(e.get('patrick akashiwa ferreira'))
