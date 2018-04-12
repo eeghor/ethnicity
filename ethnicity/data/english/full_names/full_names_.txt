@@ -1,5 +1,3 @@
-a. j. ayer
-a.j.p. taylor
 aaron collins
 aaron comrie
 aaron cresswell
@@ -59,7 +57,6 @@ adam smith
 adam underwood
 adam webster
 ade edmondson
-adele
 adele callaghan
 ademola lookman
 aden baldwin
@@ -72,15 +69,15 @@ aidan stone
 aidan wilson
 aiden mcgeady
 aiden mesias
-aiden o'brien
-aiden o'neill
+aiden obrien
+aiden oneill
 aileen anderson
 ailsa jones
 aimee driver
 aimee palmer
 ainsley maitland-niles
 al murray
-alan a'court
+alan acourt
 alan adamson
 alan archibald
 alan ashman
@@ -368,7 +365,7 @@ anthony hewitt
 anthony mcdonald
 anthony minghella
 anthony newley
-anthony o'connor
+anthony oconnor
 anthony pilkington
 anthony pleeth
 anthony ralston
@@ -428,7 +425,6 @@ austen campbell
 austen chamberlain
 austin macphee
 austin mccann
-ava kuyken
 avilla burgin
 axel tuanzebe
 bailey clements
@@ -702,7 +698,6 @@ bryan king
 bryan robson
 bud flanagan
 byron webster
-c. a. r. hoare
 caden genovesi
 caitlin leach
 cal roberts
@@ -714,13 +709,13 @@ callum davidson
 callum fordyce
 callum harriott
 callum hendry
-callum hudson-odoi
+callum hudson
 callum mackaskill
 callum mcgregor
 callum mcmanaman
 callum morris
-callum o'dowda
-callum o'hare
+callum odowda
+callum ohare
 callum paterson
 callum roberts
 callum robinson
@@ -741,7 +736,7 @@ cameron coxe
 cameron dawson
 cameron green
 cameron harper
-cameron humphreys-grant
+cameron humphreys
 cameron jerome
 cameron macpherson
 cameron mcgeehan
@@ -756,7 +751,6 @@ cammy mackay
 cammy smith
 caolan lavery
 capability brown
-capt. james cook
 carey mulligan
 carl fletcher
 carl hopwood
@@ -789,7 +783,7 @@ celia levetus
 chanell yardley
 chantal joffe
 chantelle mackie
-chantelle o'hara
+chantelle ohara
 charles babbage
 charles barry
 charles bicknell
@@ -804,13 +798,13 @@ charles laughton
 charles lyell
 charles montagu doughty
 charles newman
-charles o'hagan
+charles ohagan
 charles roe
 charles saunders
 charles simpson
 charles spurgeon
 charles todd
-charles watson-wentworth
+charles watson wentworth
 charles wheatstone
 charley boswell
 charley clifford
@@ -949,7 +943,6 @@ christopher mclaughlin
 christopher nolan
 christopher wolstenholme
 christopher wren
-chuba akpom
 churchill babington
 ciara sherwood
 ciaran clark
@@ -1011,7 +1004,7 @@ connor mahoney
 connor mclennan
 connor mcmanus
 connor murray
-connor o'keefe
+connor okeefe
 connor randall
 connor ripley
 connor roberts
@@ -1032,7 +1025,7 @@ conor washington
 coral haines
 coral-jade haines
 corey blackett-taylor
-corey o'keeffe
+corey okeeffe
 courtney dack
 courtney lock
 courtney prest
@@ -1184,7 +1177,7 @@ darren matthews
 darren mcgregor
 darren moore
 darren murray
-darren o'dea
+darren odea
 darren pratley
 darren randolph
 darren stride
@@ -1428,8 +1421,6 @@ dylan mackin
 dylan mcgeouch
 dylan mckendry
 dylan mottley-henry
-e. e. evans-pritchard
-e.b. tylor
 eadweard muybridge
 eamon swift
 eamonn bannon
@@ -1475,7 +1466,7 @@ elena purcifer
 eliab harvey
 elisabeth vellacott
 elise hughes
-elisha n'dow
+elisha ndow
 eliza bennett
 elizabeth fraser
 elizabeth fry
@@ -1581,7 +1572,7 @@ ethan stewart
 euan henderson
 euan smith
 euan spark
-eunan o'kane
+eunan okane
 evan horne
 eve gatens
 eve kennerley
@@ -1631,7 +1622,7 @@ frank heaven
 frank lampard
 frank mcavennie
 frank muir
-frank o'farrell
+frank ofarrell
 frank piercy
 frank richards
 frank ross
@@ -1726,9 +1717,9 @@ gary mccoll
 gary megson
 gary mills
 gary neville
-gary o'neil
 gary oldman
 gary oliver
+gary oneil
 gary parkinson
 gary peters
 gary roberts
@@ -1947,7 +1938,6 @@ guy ritchie
 gwen barnard
 gwen raverat
 gwynneth holt
-h. h. asquith
 hadi sacko
 hamza choudhury
 hanna reid
@@ -2017,7 +2007,6 @@ harry toffolo
 harry wilson
 harry winks
 harry wright
-harthacnut
 harvey barnes
 harvey knibbs
 harvey smith
@@ -2031,7 +2020,7 @@ hayley ladd
 hayley mills
 hayley peacock
 hayley sharp
-heather o'reilly
+heather oreilly
 helen alderson
 helen allingham
 helen binyon
@@ -2106,7 +2095,7 @@ hugh turner
 hughie gallacher
 humphrey jennings
 huw lake
-iain dowie+
+iain dowie
 iain mcchesney
 iain munro
 iain russell
@@ -2163,7 +2152,6 @@ ivan toney
 iwan roberts
 izzy christiansen
 izzy hunt
-j. j. thomson
 jack baird
 jack balmer
 jack baxter
@@ -2201,7 +2189,7 @@ jack leighfield
 jack mcmillan
 jack murray
 jack nolan
-jack o'connell
+jack oconnell
 jack ogilvie
 jack payne
 jack purdue
@@ -2283,6 +2271,7 @@ james brindley
 james brown
 james chester
 james collins
+james cook
 james craigen
 james dale
 james dyson
@@ -2317,7 +2306,7 @@ james meredith
 james milner
 james morrison
 james morton
-james o'shea
+james oshea
 james penrice
 james perch
 james prescott joule
@@ -2472,7 +2461,7 @@ jim magilton
 jim mcinally
 jim mcintyre
 jim morton
-jim o'brien
+jim obrien
 jim patterson
 jim platt
 jim standen
@@ -2707,11 +2696,11 @@ john nash
 john neal
 john neville keynes
 john norreys
-john o'hare
-john o'shea
 john ogdon
+john ohare
 john oliver
 john osborne
+john oshea
 john parrott
 john paul jones
 john peel
@@ -2938,7 +2927,7 @@ katie macloughlin
 katie mccabe
 katie mcintyre
 katie nutter
-katie o'leary
+katie oleary
 katie stanley
 katie wareham
 katie wilkinson
@@ -3018,8 +3007,8 @@ kevin mcdonald
 kevin mulholland
 kevin nisbet
 kevin nolan
-kevin o'connor
-kevin o'hara
+kevin oconnor
+kevin ohara
 kevin phillips
 kevin pietersen
 kevin poole
@@ -3090,13 +3079,13 @@ laura knight
 laura low
 laura may walkley
 laura nichol
-laura o'sullivan
+laura osullivan
 laura theresa alma-tadema
 laura walker
 laura wareham
 laura windle
-laura-jayne o'neil
-laura-jayne o'neill
+laura-jayne oneil
+laura-jayne oneill
 lauren allen
 lauren allison
 lauren briggs
@@ -3202,7 +3191,7 @@ lewis macleod
 lewis martin
 lewis moore
 lewis morgan
-lewis o'brien
+lewis obrien
 lewis spence
 lewis stevenson
 lewis strapp
@@ -3394,7 +3383,7 @@ mark little
 mark mcghee
 mark morrison
 mark noble
-mark o'hara
+mark ohara
 mark owen
 mark pease
 mark proctor
@@ -3434,7 +3423,7 @@ martin johnson
 martin kelly
 martin lowry
 martin mackinnon
-martin o'neill
+martin oneill
 martin peters
 martin rees
 martin roscoe
@@ -3453,7 +3442,6 @@ mary adshead
 mary audsley
 mary earps
 mary hoare
-mary ii
 mary nightingale
 mary paley marshall
 mary robinson
@@ -3483,8 +3471,8 @@ matt lucas
 matt macey
 matt mills
 matt morley
-matt o'riley
 matt oakley
+matt oriley
 matt phillips
 matt prestridge
 matt reeves
@@ -3522,7 +3510,7 @@ max ashmore
 max clark
 max lowe
 max melbourne
-max o'leary
+max oleary
 max ram
 meaghan sargeant
 megan alexander
@@ -3572,8 +3560,8 @@ michael mancienne
 michael mcgovern
 michael mcintyre
 michael morrison
-michael o'grady
-michael o'halloran
+michael ogrady
+michael ohalloran
 michael owen
 michael palin
 michael park
@@ -3596,7 +3584,7 @@ mick kennedy
 mick lyons
 mick mccarthy
 mick mills
-mick o'brien
+mick obrien
 mick wadsworth
 mickel miller
 mickel platt
@@ -3698,7 +3686,6 @@ nathaniel chalobah
 nathaniel clyne
 nathaniel mendez-laing
 neale cooper
-nedum onuoha
 neil adams
 neil alexander
 neil bath
@@ -3840,12 +3827,12 @@ patrick macnee
 patrick martin
 patrick maynard
 patrick moore
-patrick o'neil
+patrick oneil
 patrick roberts
 patrick stewart
 patrick troughton
 patrick webber
-paudie o'connor
+paudie oconnor
 paul akers
 paul allen
 paul barron
@@ -3897,7 +3884,7 @@ paul merton
 paul miller
 paul mitchell
 paul murray
-paul o'brien
+paul obrien
 paul parker
 paul quinn
 paul reeves
@@ -4010,8 +3997,6 @@ prince george
 prince william augustus
 queen anne
 quenton ashlyn
-r. v. jones
-r.j. mitchell
 rab douglas
 rach panting
 rachael ackroyd
@@ -4123,7 +4108,7 @@ richard keogh
 richard long
 richard murray
 richard muspratt
-richard o'kelly
+richard okelly
 richard stearman
 richard stone
 richard strachan
@@ -4249,7 +4234,7 @@ ronnie barker
 ronnie burgess
 ronnie jepson
 ronnie moran
-ronnie o'sullivan
+ronnie osullivan
 ronnie robb
 ronnie simpson
 ronnie wallwork
@@ -4481,7 +4466,7 @@ sean kelly
 sean maguire
 sean morrison
 sean murdoch
-sean o'driscoll
+sean odriscoll
 sean raggett
 sean welsh
 sebastian cabot
@@ -4513,7 +4498,6 @@ shay logan
 shea gordon
 shelagh cluett
 sherry mccue
-sheyi ojo
 shiloh remy
 shirley stelfox
 shirley williams
@@ -4564,8 +4548,8 @@ sophie harris
 sophie ingle
 sophie jones
 sophie mclean
-sophie o'rourke
 sophie okonedo
+sophie orourke
 sophie raworth
 spencer compton
 spencer compton cavendish
@@ -4617,7 +4601,7 @@ stephen kingsley
 stephen mcginn
 stephen mcmanus
 stephen merchant
-stephen o'donnell
+stephen odonnell
 stephen preston
 stephen purches
 stephen ward
@@ -4709,7 +4693,7 @@ stuart kettlewell
 stuart lovell
 stuart naylor
 stuart nethercott
-stuart o'keefe
+stuart okeefe
 stuart pearce
 stuart slater
 stuart sorbie
@@ -4723,7 +4707,7 @@ syd barrett
 sydney camm
 sydney greenstreet
 tafari moore
-taffy o'callaghan
+taffy ocallaghan
 tam scobbie
 tammy abraham
 tammy waine
@@ -4799,7 +4783,7 @@ thomas malthus
 thomas mcintyre
 thomas morley
 thomas newcomen
-thomas o'ware
+thomas oware
 thomas paine
 thomas pelham-holles
 thomas slaney
@@ -5063,8 +5047,6 @@ william holman hunt
 william hoste
 william howe
 william hyde wollaston
-william ii
-william iii
 william irvine
 william kempe
 william lamb
@@ -5128,13 +5110,11 @@ winifred austen
 winifred knights
 winston churchill
 winston reid
-yasin ben el-mhanni
 yasmine swarbrick
 zach clough
 zain westbrooke
 zak starkey
 zak vyner
 zander clark
-zayn malik
 zoe millington
 zoe ness

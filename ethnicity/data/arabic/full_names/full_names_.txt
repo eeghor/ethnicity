@@ -1887,7 +1887,6 @@ parviz yahaghi
 payam malekian
 payam niazmand
 pedram mohammadi
-pedro miguel
 pegah ahangarani
 pegah anvarian
 pegah ferydoni
@@ -1903,7 +1902,7 @@ porochista khakpour
 pouran derakhshandeh
 pouria poursorkh
 purandokht
-qamar ol molouk vaziri
+qamar molouk vaziri
 qasem burhan
 rabee ali hassan
 rabee ghazdari
@@ -1996,7 +1995,6 @@ roozbeh cheshmi
 roozbeh farahanipour
 roozbeh shahalidoost
 ross mirkarimi
-roxanne pallett
 roya arab
 roya hakakian
 roya nonahali

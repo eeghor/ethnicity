@@ -15,25 +15,55 @@ class Ethnicity(object):
 	get ethnicity from name
 	"""
 	
-	def __init__(self):
+	def __init__(self, verbose=False):
+
+		self.VERBOSE = verbose
 
 		self.DATADIR = os.path.join(os.path.curdir, 'data')
 
 		self.ETHNICITIES = set("""indian japanese greek arabic turkish
 									thai vietnamese balkan italian samoan
-										hawaiian khmer chinese korean polish fijian english german spanish portuguese""".split())
+										hawaiian khmer chinese korean polish fijian english german spanish portuguese russian""".split())
 		
 		assert self.ETHNICITIES <= set(os.listdir(self.DATADIR)), '** error ** data is missing for some ethnicities!'
 
-		print(f'ethnicities: {len(self.ETHNICITIES)}')
-
 		# map the included ethnicities to race
-		self.RACE_TO_ETHN = {'asian': ['indian', 'japanese', 'vietnamese', 'chinese', 'korean', 'khmer', 'thai'],
-							 'white': ['greek', 'turkish', 'balkan', 'italian', 'polish', 'english', 'german', 'portuguese'],
-							 'black': ['arabic'],
-							 'latino': ['spanish']}
+		self.RACE_TO_ETHN = {'asian': {'indian', 'japanese', 'vietnamese', 'chinese', 'korean', 'khmer', 'thai'},
+							 'white': {'greek', 'turkish', 'balkan', 'italian', 'polish', 
+							 							 			'english', 'german', 'portuguese', 'russian'},
+							 'black': {'arabic'},
+							 'latino': {'spanish'}}
 		
 		self.SEPARATORS = re.compile(r'[-,_/().]')
+
+		# folder to store created dictionaries (for testing purposes)
+		self.TEMP_DIR = os.path.join(os.path.curdir, 'temp')
+
+		# quotes on how to add full name components to first and last names: we require minimal counts
+		# e.g. 1 means just add all available, while 2 means add only those that occur at least twice 
+		self.QUOTES = {'russian': {'last_names': 1, 'first_names': 2},
+						'indian': {'last_names': 1, 'first_names': 3},
+						'japanese': {'last_names': 1, 'first_names': 2},
+						'vietnamese': {'last_names': 1, 'first_names': 2},
+						'chinese': {'last_names': 1, 'first_names': 4},
+						'korean': {'last_names': 1, 'first_names': 2},
+						'khmer': {'last_names': 1, 'first_names': 1},
+						'thai': {'last_names': 2, 'first_names': 1},
+						'greek': {'last_names': 1, 'first_names': 2},
+						'turkish': {'last_names': 1, 'first_names': 2},
+						'balkan': {'last_names': 1, 'first_names': 2},
+						'italian': {'last_names': 1, 'first_names': 2},
+						'polish': {'last_names': 2, 'first_names': 1},
+						'english': {'last_names': 2, 'first_names': 1},
+						'german': {'last_names': 2, 'first_names': 2},
+						'portuguese': {'last_names': 1, 'first_names': 1},
+						'arabic': {'last_names': 1, 'first_names': 1},
+						'spanish': {'last_names': 1, 'first_names': 2},
+						'fijian': {'last_names': 1, 'first_names': 1}
+						}
+
+		self.SURNAME_NOT_ENOUGH = {'english', 'german'}
+		self.NAME_IS_ENOUGH = {'arabic', 'japanese', 'fijian', 'samoan', 'hawaiian'}
 
 	def __readtext(self, file):
 		"""
@@ -80,7 +110,8 @@ class Ethnicity(object):
 						self.__writetext(self.__readtext(f), f)
 					d[e][_] = list(self.__readtext(f))
 				except:
-					print(f'warning: can\'t find {e} {_}!')		
+					if self.VERBOSE:
+						print(f'warning: can\'t find {e} {_}!')		
 
 
 		self.ETHNIC_NAMES_U = defaultdict(lambda: defaultdict(set))
@@ -109,12 +140,11 @@ class Ethnicity(object):
 					if name in d[e]:
 						pick_idx = -1 if (name == 'last_names') else 0
 						lst = [full_name.split()[pick_idx] for full_name in d[e]['full_names']]
-						for name_, count in Counter(lst).most_common(math.floor(0.8*len(lst))):
-							if name == 'last_names':
-								if count > 1:
+						for name_, count in Counter(lst).most_common():
+							if count >= self.QUOTES[e][name]:
+								if name == 'last_names':
 									self.ETHNIC_SURNAMES_U[name_[0]][name_].add(e)
-							elif name == 'first_names':
-								if count > 2:
+								elif name == 'first_names':
 									self.ETHNIC_NAMES_U[name_[0]][name_].add(e)
 
 			# if common surnames are available, simply add them all
@@ -157,13 +187,17 @@ class Ethnicity(object):
 		for r in d.iterrows():
 			_name = r[1]['name']
 			self.RACE_DIC[_name[0]][_name] = r[1]['race']
-
 		
-		self.__writejson(self.ETHNIC_NAMES_U, 'dic_names_.json')
-		self.__writejson(self.ETHNIC_SURNAMES_U, 'dic_surnames_.json')
-		self.__writejson(self.ETHNIC_ENDINGS_U, 'dic_sur_endings_.json')
+		# store dictionaries (for testing purposes, to see what's in there)
 
-		json.dump(self.RACE_DIC, open('dic_race_.json','w'))
+		if not os.path.exists(self.TEMP_DIR):
+			os.mkdir(self.TEMP_DIR)
+
+		self.__writejson(self.ETHNIC_NAMES_U, os.path.join(self.TEMP_DIR, 'dic_names_.json'))
+		self.__writejson(self.ETHNIC_SURNAMES_U, os.path.join(self.TEMP_DIR, 'dic_surnames_.json'))
+		self.__writejson(self.ETHNIC_ENDINGS_U, os.path.join(self.TEMP_DIR, 'dic_sur_endings_.json')) 
+
+		json.dump(self.RACE_DIC, open(os.path.join(self.TEMP_DIR, 'dic_race_.json'),'w'))
 
 		return self
 	
@@ -195,13 +229,13 @@ class Ethnicity(object):
 		"""
 		find word in the name dictionary (arranged by letter)
 		"""
-		return self.ETHNIC_NAMES_U[word[0]].get(word, None)
+		return self.ETHNIC_NAMES_U[word[0]].get(word, set())
 
 	def search_surnames(self, word):
 		"""
 		find word in the surname dictionary (arranged by letter)
 		"""
-		return self.ETHNIC_SURNAMES_U[word[0]].get(word, None)
+		return self.ETHNIC_SURNAMES_U[word[0]].get(word, set())
 
 	def search_surname_endings(self, word):
 		"""
@@ -209,11 +243,13 @@ class Ethnicity(object):
 		"""
 		found = set()
 
-		for n in range(3,6):
+		for n in range(5,2,-1):
 			_ = word[-n:]
 			ethnicity_set = self.ETHNIC_ENDINGS_U[_[0]].get(_, None)
 			if ethnicity_set:
 				found.update(ethnicity_set)
+				if len(ethnicity_set) == 1:
+					return found
 
 		return found
 
@@ -222,42 +258,6 @@ class Ethnicity(object):
 		find race
 		"""
 		return self.RACE_DIC[word[0]].get(word, None)
-
-
-	# def _by_letter(self, name, what):
-	# 	"""
-	# 	find unique name or surname by letter
-	# 	"""
-	# 	assert what in 'name surname_ending race'.split(), f'function _by_letter must receive a valid what value!'
-
-	# 	if what == 'name':	
-
-	# 		_l1 = name[0]
-	
-	# 		try:
-	# 			return self.ETHNIC_NAMES_U[_l1].get(name, None)
-	# 		except:
-	# 			return None
-
-	# 	elif what == 'surname_ending':
-
-	# 		for last in range(4, 1, -1):
-
-	# 			_ = name[-last:]
-
-	# 			_l1 = _[0]
-
-	# 			try:
-	# 				return self.ETHNIC_ENDINGS_U[_l1][_]
-	# 			except:
-	# 				continue
-
-	# 	elif what == 'race':
-
-	# 		try:
-	# 			return self.RACE_DIC[name[0]].get(name, None)
-	# 		except:
-	# 			return None
 
 
 	def _split_name_surname(self, st):
@@ -280,23 +280,6 @@ class Ethnicity(object):
 			_name = None
 
 		return (_name, _surname)
-
-	# def _find_unique(self, name, surname):
-
-	# 	_name, _surname = name, surname
-
-	# 	if _name:
-	# 		eth_unique_name = self._by_letter(_name, 'name')
-	# 		if eth_unique_name:
-	# 			return eth_unique_name
-
-	# 	if _surname:
-	# 		eth_surn_ending = self._by_letter(_surname, 'surname_ending')
-	# 		rc = self._by_letter(_surname, 'race')
-	# 		print('rc=', rc)
-	# 		if eth_surn_ending:
-	# 			return eth_surn_ending
-
 	
 	def get(self, st):
 
@@ -307,19 +290,74 @@ class Ethnicity(object):
 
 		_name, _surname = self._split_name_surname(st)
 
-		print(f'_name = {_name} _surname = {_surname}')
+		name_ethnicities = self.search_names(_name)
+		print('name_ethnicities=',name_ethnicities)
+		surname_ethnicities = self.search_surnames(_surname)
+		print('surname_ethnicities=',surname_ethnicities)
+		surname_ending_ethnicities = self.search_surname_endings(_surname)
+		print('surname_ending_ethnicities=',surname_ending_ethnicities)
+		race = self.search_race(_surname)
 
-		print(f'found names: {self.search_names(_name)}')
-		print(f'found surnames: {self.search_surnames(_surname)}')
-		print(f'found surname endings: {self.search_surname_endings(_surname)}')
-		print(f'found race: {self.search_race(_surname)}')
+		ethnicity = None
+
+		# if both name and surname point to a specific ethnicity
+		_ns = name_ethnicities & surname_ethnicities
+		if len(_ns) == 1:
+			return _ns
+
+		# if name only
+		if len(name_ethnicities) == 1:
+			if name_ethnicities & self.NAME_IS_ENOUGH:
+				return name_ethnicities
+
+		# if surname only 
+		if len(surname_ethnicities) == 1:
+			if not (surname_ethnicities & self.SURNAME_NOT_ENOUGH):
+				return surname_ethnicities
+
+		# if name and surname ending point to something definite
+		_nse = name_ethnicities & surname_ending_ethnicities
+		if len(_nse) == 1:
+			return _nse
+
+		# if surname endings only
+		if len(surname_ending_ethnicities) == 1:
+			if not (surname_ending_ethnicities & self.SURNAME_NOT_ENOUGH):
+				return surname_ending_ethnicities
+
+		# if name only
+		if len(name_ethnicities) == 1:
+			return name_ethnicities
 
 
-		# return ethnicity
+		# if name may be multiple ethnicities, race can help to decide
+		if race:
+			_sr = surname_ethnicities & self.RACE_TO_ETHN[race]
+			if len(_sr) == 1:
+				return _sr
+			_ser = surname_ending_ethnicities & self.RACE_TO_ETHN[race]
+			if len(_ser) == 1:
+				return _ser
+			_nr = name_ethnicities & self.RACE_TO_ETHN[race]
+			if len(_nr) == 1:
+				return _nr
+
+		# by now it seems it's hard to pick a single ethnicity, so if there are only 2 candidates..
+		if len(_ns) == 2:
+			return _ns
+
+		return ethnicity
 				
 
 if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	print(e.get('patrick akashiwa ferreira'))
+	test_names = ['jessica hui', 'robert schulz', 'vlad petrovskiy', 'mariam smith',
+						'peter mallow', 'raj kumar', 'iker pozzi', 'mohammad johnson', 
+						'bastian ozil', 'frank patrakos', 'david fuentes', 'kim yoon',
+						'emele kuoi', 'andrew reid', 'pyotr slakowski', 'igor korostil', 'nima sharifi','mehrdad pegah']
+
+	for name in test_names:
+		_ = e.get(name)
+		print(f'{name.upper()} is {next(iter(_)).upper() if _ else None}')

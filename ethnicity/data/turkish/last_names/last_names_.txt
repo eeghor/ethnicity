@@ -21,6 +21,7 @@ kundakci
 macar
 marangoz
 mataraci
+ozil
 peynirci
 sadik
 solak

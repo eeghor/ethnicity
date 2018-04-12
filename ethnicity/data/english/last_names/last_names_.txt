@@ -1,9 +1,3 @@
-'aunaie
-'derrick'
-).
--(l)ing.
--roman
--shaped
 aaron
 abbey
 abbott
@@ -24,9 +18,9 @@ adamson
 adcock
 addison
 adkins
-aed.
-aedelmaer.
-aelfwig.
+aed
+aedelmaer
+aelfwig
 aelfwine
 aiken
 ainsworth
@@ -84,7 +78,7 @@ audley
 augustine
 austin
 auteberry
-avardr.
+avardr
 averill
 avery
 ayers
@@ -1236,7 +1230,7 @@ thorn
 thorne
 thornton
 thorpe
-thorsteinn.
+thorsteinn
 thrussell
 thurstan
 thwaite
