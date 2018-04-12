@@ -18,7 +18,7 @@ class Ethnicity(object):
 
 		self.VERBOSE = verbose
 
-		self.DATADIR = os.path.join(os.path.curdir, 'data')
+		self.DATADIR = os.path.join(os.path.dirname(__file__), 'data')
 
 		self.ETHNICITIES = set("""indian japanese greek arabic turkish
 									thai vietnamese balkan italian samoan
