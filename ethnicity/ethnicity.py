@@ -174,7 +174,7 @@ class Ethnicity(object):
 				'pct2prace': 'mixed', 
 				'pcthispanic': 'latino'}
 
-		d = pd.read_csv(os.path.join(self.DATADIR, 'Names_2010Census.csv')).iloc[:,[0,5,6,7,8,9,10]].dropna()
+		d = pd.read_csv(os.path.join(self.DATADIR, 'race_', 'race_.csv')).iloc[:,[0,5,6,7,8,9,10]].dropna()
 		d['name'] = d['name'].str.lower()
 		d.iloc[:,1:] = d.iloc[:,1:].applymap(lambda x: 0 if not str(x).replace('.','').isdigit() else x)
 		d['max'] = d.iloc[:,1:].astype(float).max(axis=1)
@@ -281,7 +281,10 @@ class Ethnicity(object):
 
 		return (_name, _surname)
 	
-	def get(self, st):
+	def _get(self, st):
+		"""
+		try to figure out ethnicity by someone's name given as string st
+		"""
 
 		st = self._normalize(st)
 		
@@ -290,13 +293,13 @@ class Ethnicity(object):
 
 		_name, _surname = self._split_name_surname(st)
 
-		name_ethnicities = self.search_names(_name)
-		print('name_ethnicities=',name_ethnicities)
-		surname_ethnicities = self.search_surnames(_surname)
-		print('surname_ethnicities=',surname_ethnicities)
-		surname_ending_ethnicities = self.search_surname_endings(_surname)
-		print('surname_ending_ethnicities=',surname_ending_ethnicities)
-		race = self.search_race(_surname)
+		name_ethnicities = self.search_names(_name) if _name else set()
+		# print('name_ethnicities=',name_ethnicities)
+		surname_ethnicities = self.search_surnames(_surname) if _surname else set()
+		# print('surname_ethnicities=',surname_ethnicities)
+		surname_ending_ethnicities = self.search_surname_endings(_surname) if _surname else set()
+		# print('surname_ending_ethnicities=',surname_ending_ethnicities)
+		race = self.search_race(_surname) if _surname else None
 
 		ethnicity = None
 
@@ -329,7 +332,6 @@ class Ethnicity(object):
 		if len(name_ethnicities) == 1:
 			return name_ethnicities
 
-
 		# if name may be multiple ethnicities, race can help to decide
 		if race:
 			_sr = surname_ethnicities & self.RACE_TO_ETHN[race]
@@ -347,17 +349,27 @@ class Ethnicity(object):
 			return _ns
 
 		return ethnicity
+
+	def get(self, s):
+
+		if isinstance(s, str):
+			_ = self._get(s)
+			return "|".join(list(_)) if _ else '---'
+		elif isinstance(s, list):
+			ethnicities_ = []
+			for name in s:
+				ethnicities_.append(self._get(name))
+			return pd.DataFrame({'name': [name.lower() for name in s], 
+								'ethnicity': ["|".join(list(_)) if _ else '---' for _ in ethnicities_]})
 				
 
 if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	test_names = ['jessica hui', 'robert schulz', 'vlad petrovskiy', 'mariam smith',
+	test_names = ['jessica hui', 'robert schulz', 'vlad petrovskiy', 'joao smith',
 						'peter mallow', 'raj kumar', 'iker pozzi', 'mohammad johnson', 
 						'bastian ozil', 'frank patrakos', 'david fuentes', 'kim yoon',
-						'emele kuoi', 'andrew reid', 'pyotr slakowski', 'igor korostil', 'nima sharifi','mehrdad pegah']
+						'emele kuoi', 'andrew miller', 'pyotr slakowski', 'george', 'nima sharifi','mehrdad pegah']
 
-	for name in test_names:
-		_ = e.get(name)
-		print(f'{name.upper()} is {next(iter(_)).upper() if _ else None}')
+	print(e.get(test_names))
