@@ -3,7 +3,6 @@ import json
 from unidecode import unidecode
 import pandas as pd
 
-import math
 import re
 import time
 from collections import defaultdict, Counter
@@ -59,7 +58,8 @@ class Ethnicity(object):
 						'portuguese': {'last_names': 1, 'first_names': 1},
 						'arabic': {'last_names': 1, 'first_names': 1},
 						'spanish': {'last_names': 1, 'first_names': 2},
-						'fijian': {'last_names': 1, 'first_names': 1}
+						'fijian': {'last_names': 1, 'first_names': 1},
+						'hawaiian': {'last_names': 1, 'first_names': 1}
 						}
 
 		self.SURNAME_NOT_ENOUGH = {'english', 'german'}
@@ -294,11 +294,8 @@ class Ethnicity(object):
 		_name, _surname = self._split_name_surname(st)
 
 		name_ethnicities = self.search_names(_name) if _name else set()
-		# print('name_ethnicities=',name_ethnicities)
 		surname_ethnicities = self.search_surnames(_surname) if _surname else set()
-		# print('surname_ethnicities=',surname_ethnicities)
 		surname_ending_ethnicities = self.search_surname_endings(_surname) if _surname else set()
-		# print('surname_ending_ethnicities=',surname_ending_ethnicities)
 		race = self.search_race(_surname) if _surname else None
 
 		ethnicity = None
@@ -367,9 +364,6 @@ if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	test_names = ['jessica hui', 'robert schulz', 'vlad petrovskiy', 'joao smith',
-						'peter mallow', 'raj kumar', 'iker pozzi', 'mohammad johnson', 
-						'bastian ozil', 'frank patrakos', 'david fuentes', 'kim yoon',
-						'emele kuoi', 'andrew miller', 'pyotr slakowski', 'george', 'nima sharifi','mehrdad pegah']
+	test_names = ['emele kuoi', 'andrew miller', 'robert slakowski', 'peter', 'nima al hassan','christiano ronaldo']
 
 	print(e.get(test_names))

@@ -37,3 +37,20 @@ Get ethnicity from name.  At the moment, we cover
 * [Most common names I Brazil](https://censo2010.ibge.gov.br/nomes/#/ranking)
 * [Most common surnames in Brazil](https://nomeschiques.com/apelidos-populares-de-pessoas/)
 * [Most common Russian surnames](http://russkg.ru/index.php?option=com_content&view=article&id=4390:-500&catid=84:2012-12-02-23-13-33&Itemid=63)
+
+## Usage
+```
+e = Ethnicity().make_dicts()
+
+print(e.get(['emele kuoi', 'andrew miller', 'robert slakowski', 'peter', 'nima al hassan','christiano ronaldo']))
+```
+which should give you a pandas data frame as below
+```
+                 name   ethnicity
+0          emele kuoi      fijian
+1       andrew miller     english
+2    robert slakowski      polish
+3               peter         ---
+4      nima al hassan      arabic
+5  christiano ronaldo  portuguese
+```
