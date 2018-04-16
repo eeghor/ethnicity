@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 
 setup(name='ethnicity',
-      version='0.0.7',
+      version='0.0.8',
       description='Get ethnicity from name',
       long_description='',
       classifiers=[

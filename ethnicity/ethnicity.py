@@ -20,7 +20,7 @@ class Ethnicity(object):
 
 		self.DATADIR = os.path.join(os.path.dirname(__file__), 'data')
 
-		self.ETHNICITIES = set("""indian japanese greek arabic turkish
+		self.ETHNICITIES = set("""indian japanese greek arabic turkish iranian 
 									thai vietnamese balkan italian samoan
 										hawaiian khmer chinese korean polish fijian english german spanish portuguese russian""".split())
 		
@@ -28,7 +28,7 @@ class Ethnicity(object):
 
 		# map the included ethnicities to race
 		self.RACE_TO_ETHN = {'asian': {'indian', 'japanese', 'vietnamese', 'chinese', 'korean', 'khmer', 'thai'},
-							 'white': {'greek', 'turkish', 'balkan', 'italian', 'polish', 
+							 'white': {'greek', 'turkish', 'balkan', 'italian', 'polish', 'iranian', 
 							 							 			'english', 'german', 'portuguese', 'russian'},
 							 'black': {'arabic'},
 							 'latino': {'spanish'}}
@@ -57,6 +57,7 @@ class Ethnicity(object):
 						'german': {'last_names': 2, 'first_names': 2},
 						'portuguese': {'last_names': 1, 'first_names': 1},
 						'arabic': {'last_names': 1, 'first_names': 1},
+						'iranian': {'last_names': 1, 'first_names': 1},
 						'spanish': {'last_names': 1, 'first_names': 2},
 						'fijian': {'last_names': 1, 'first_names': 1},
 						'hawaiian': {'last_names': 1, 'first_names': 1}
@@ -364,6 +365,6 @@ if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	test_names = ['emele kuoi', 'andrew miller', 'robert slakowski', 'peter', 'nima al hassan','christiano ronaldo']
+	test_names = ['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan','christiano ronaldo', 'parisa karimi']
 
 	print(e.get(test_names))

@@ -425,7 +425,6 @@ alfreda
 algar
 alger
 algernon
-ali
 aliah
 alibone
 alice
@@ -785,7 +784,6 @@ andress
 andrew
 andrewes
 andrews
-andrey
 andrina
 andrus
 andy
@@ -843,11 +841,8 @@ annakin
 annal
 annalee
 annalise
-annan
-annand
 annandale
 annas
-anne
 anneka
 annells
 annesley
@@ -1572,8 +1567,6 @@ baistow
 baitson
 baitup
 bake
-bakehouse
-baker
 bakes
 bakewell
 balaam
@@ -1692,7 +1685,6 @@ banbery
 banbury
 bance
 bancroft
-band
 banden
 bandey
 bandy
@@ -14274,7 +14266,6 @@ griffy
 grifiths
 grigg
 griggs
-grigor
 grigsby
 grigson
 grill
@@ -21680,7 +21671,6 @@ maris
 marisa
 marison
 marissa
-marje
 marjeram
 marjoram
 marjoran
@@ -25408,7 +25398,6 @@ petit
 petitt
 petley
 peto
-petra
 petre
 petrey
 petrick
