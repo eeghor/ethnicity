@@ -54,12 +54,10 @@ pip3 install ethnicity
 ```
 e = Ethnicity().make_dicts()
 
-print(e.get(['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan',
-'christiano ronaldo', 'parisa karimi']))
+print(e.get(['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan', 'christiano ronaldo', 'parisa karimi']))
 ```
 which should give you a pandas data frame as below
 ```
-   			   name   ethnicity
 0          emele kuoi      fijian
 1       andrew miller     english
 2               peter         ---
@@ -67,5 +65,4 @@ which should give you a pandas data frame as below
 4      nima al hassan      arabic
 5  christiano ronaldo  portuguese
 6       parisa karimi     iranian
-
 ```
