@@ -1,6 +1,6 @@
 # ethnicity
 Get ethnicity from name.  At the moment, we cover 
-* indian 
+* indian (excluding islamic states)
 * japanese 
 * greek 
 * Iranian
@@ -8,19 +8,19 @@ Get ethnicity from name.  At the moment, we cover
 * turkish
 * thai 
 * vietnamese 
-* balkan (Serbian, Croatian, Bosnian, Slovenian )
+* balkan (serbian, croatian, bosnian, slovenian )
 * italian 
 * samoan
 * hawaiian 
-* khmer 
+* khmer (cambodian)
 * chinese 
 * korean 
 * polish 
 * fijian 
 * english 
 * german 
-* spanish 
-* portuguese (Portuguese and Brasilian)
+* spanish (spanish and mexican)
+* portuguese (portuguese and brazilian)
 * russian
 
 ## Data Sources
@@ -54,7 +54,8 @@ pip3 install ethnicity
 ```
 e = Ethnicity().make_dicts()
 
-print(e.get(['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan','christiano ronaldo', 'parisa karimi']))
+print(e.get(['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan',
+'christiano ronaldo', 'parisa karimi']))
 ```
 which should give you a pandas data frame as below
 ```
