@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 
 setup(name='ethnicity',
-      version='0.0.8',
+      version='0.0.9',
       description='Get ethnicity from name',
       long_description='',
       classifiers=[
@@ -11,7 +11,7 @@ setup(name='ethnicity',
         "Topic :: Text Processing",
         "Topic :: Text Processing :: Filters"
       ],
-      url='https://github.com/i9k/ethnicity',
+      url='https://github.com/eeghor/ethnicity',
       author='Igor Korostil',
       author_email='eeghor@gmail.com',
       license='MIT',

@@ -306,15 +306,15 @@ class Ethnicity(object):
 		if len(_ns) == 1:
 			return _ns
 
-		# if name only
-		if len(name_ethnicities) == 1:
-			if name_ethnicities & self.NAME_IS_ENOUGH:
-				return name_ethnicities
-
 		# if surname only 
 		if len(surname_ethnicities) == 1:
 			if not (surname_ethnicities & self.SURNAME_NOT_ENOUGH):
 				return surname_ethnicities
+
+		# if name only
+		if len(name_ethnicities) == 1:
+			if name_ethnicities & self.NAME_IS_ENOUGH:
+				return name_ethnicities
 
 		# if name and surname ending point to something definite
 		_nse = name_ethnicities & surname_ending_ethnicities
