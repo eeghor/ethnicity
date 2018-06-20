@@ -8,7 +8,7 @@ Get ethnicity from name.  At the moment, we cover
 * turkish
 * thai 
 * vietnamese 
-* balkan (serbian, croatian, bosnian, slovenian )
+* south slavic (serbian, croatian, bosnian, slovenian )
 * italian 
 * samoan
 * hawaiian 
@@ -17,9 +17,9 @@ Get ethnicity from name.  At the moment, we cover
 * korean 
 * polish 
 * fijian 
-* english 
+* anglo-saxon 
 * german 
-* spanish (spanish and mexican)
+* hispanic (spanish and mexican)
 * portuguese (portuguese and brazilian)
 * russian
 
@@ -58,11 +58,12 @@ print(e.get(['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan',
 ```
 which should give you a pandas data frame as below
 ```
-0          emele kuoi      fijian
-1       andrew miller     english
-2               peter         ---
-3              andrey     russian
-4      nima al hassan      arabic
-5  christiano ronaldo  portuguese
-6       parisa karimi     iranian
+                 Name    Ethnicity
+0          Emele Kuoi       fijian
+1       Andrew Miller  anglo-saxon
+2               Peter          ---
+3              Andrey      russian
+4      Nima Al Hassan       arabic
+5  Christiano Ronaldo   portuguese
+6       Parisa Karimi      iranian
 ```

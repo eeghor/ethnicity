@@ -21,17 +21,19 @@ class Ethnicity(object):
 		self.DATADIR = os.path.join(os.path.dirname(__file__), 'data')
 
 		self.ETHNICITIES = set("""indian japanese greek arabic turkish iranian 
-									thai vietnamese balkan italian samoan
-										hawaiian khmer chinese korean polish fijian english german spanish portuguese russian""".split())
+									thai vietnamese south-slavic italian samoan
+										hawaiian khmer chinese korean polish fijian anglo-saxon german hispanic portuguese russian""".split())
 		
 		assert self.ETHNICITIES <= set(os.listdir(self.DATADIR)), '** error ** data is missing for some ethnicities!'
 
 		# map the included ethnicities to race
 		self.RACE_TO_ETHN = {'asian': {'indian', 'japanese', 'vietnamese', 'chinese', 'korean', 'khmer', 'thai'},
-							 'white': {'greek', 'turkish', 'balkan', 'italian', 'polish', 'iranian', 
-							 							 			'english', 'german', 'portuguese', 'russian'},
+							 'white': {'greek', 'turkish', 'south-slavic', 'italian', 'polish', 'iranian', 
+							 							 			'anglo-saxon', 'german', 'portuguese', 'russian'},
 							 'black': {'arabic'},
-							 'latino': {'spanish'}}
+							 'latino': {'hispanic'}}
+
+		self.SALUTS = 'mr ms miss mrs mister'.split()
 		
 		self.SEPARATORS = re.compile(r'[-,_/().]')
 
@@ -40,30 +42,51 @@ class Ethnicity(object):
 
 		# quotes on how to add full name components to first and last names: we require minimal counts
 		# e.g. 1 means just add all available, while 2 means add only those that occur at least twice 
-		self.QUOTES = {'russian': {'last_names': 1, 'first_names': 2},
-						'indian': {'last_names': 1, 'first_names': 3},
-						'japanese': {'last_names': 1, 'first_names': 2},
-						'vietnamese': {'last_names': 1, 'first_names': 2},
-						'chinese': {'last_names': 1, 'first_names': 4},
-						'korean': {'last_names': 1, 'first_names': 2},
-						'khmer': {'last_names': 1, 'first_names': 1},
-						'thai': {'last_names': 2, 'first_names': 1},
-						'greek': {'last_names': 1, 'first_names': 2},
-						'turkish': {'last_names': 1, 'first_names': 2},
-						'balkan': {'last_names': 1, 'first_names': 2},
-						'italian': {'last_names': 1, 'first_names': 2},
-						'polish': {'last_names': 2, 'first_names': 1},
-						'english': {'last_names': 2, 'first_names': 1},
-						'german': {'last_names': 2, 'first_names': 2},
-						'portuguese': {'last_names': 1, 'first_names': 1},
-						'arabic': {'last_names': 1, 'first_names': 1},
-						'iranian': {'last_names': 1, 'first_names': 1},
-						'spanish': {'last_names': 1, 'first_names': 2},
-						'fijian': {'last_names': 1, 'first_names': 1},
-						'hawaiian': {'last_names': 1, 'first_names': 1}
+		self.QUOTES = {'russian': 
+							{'last_names': 1, 'first_names': 2},
+						'indian': 
+							{'last_names': 1, 'first_names': 3},
+						'japanese': 
+							{'last_names': 1, 'first_names': 2},
+						'vietnamese': 
+							{'last_names': 1, 'first_names': 2},
+						'chinese': 
+							{'last_names': 1, 'first_names': 4},
+						'korean': 
+							{'last_names': 1, 'first_names': 2},
+						'khmer': 
+							{'last_names': 1, 'first_names': 1},
+						'thai': 
+							{'last_names': 2, 'first_names': 1},
+						'greek': 
+							{'last_names': 1, 'first_names': 2},
+						'turkish': 
+							{'last_names': 1, 'first_names': 2},
+						'south-slavic': 
+							{'last_names': 1, 'first_names': 2},
+						'italian': 
+							{'last_names': 1, 'first_names': 2},
+						'polish': 
+							{'last_names': 2, 'first_names': 1},
+						'anglo-saxon': 
+							{'last_names': 2, 'first_names': 1},
+						'german': 
+							{'last_names': 2, 'first_names': 2},
+						'portuguese': 
+							{'last_names': 1, 'first_names': 1},
+						'arabic': 
+							{'last_names': 1, 'first_names': 1},
+						'iranian': 
+							{'last_names': 1, 'first_names': 1},
+						'hispanic': 
+							{'last_names': 1, 'first_names': 2},
+						'fijian': 
+							{'last_names': 1, 'first_names': 1},
+						'hawaiian': 
+							{'last_names': 1, 'first_names': 1}
 						}
 
-		self.SURNAME_NOT_ENOUGH = {'english', 'german'}
+		self.SURNAME_NOT_ENOUGH = {'anglo-saxon', 'german'}
 		self.NAME_IS_ENOUGH = {'arabic', 'japanese', 'fijian', 'samoan', 'hawaiian'}
 
 	def __readtext(self, file):
@@ -119,7 +142,7 @@ class Ethnicity(object):
 		self.ETHNIC_SURNAMES_U = defaultdict(lambda: defaultdict(set))
 		self.ETHNIC_ENDINGS_U = defaultdict(lambda: defaultdict(set))
 
-		# create a dictionary like {'a': 'aaron': ['english', 'fijian'],
+		# create a dictionary like {'a': 'aaron': ['anglo-saxon', 'fijian'],
 		#  								   'abu': ['polish', 'khmer']}
 
 		for e in d:
@@ -269,7 +292,9 @@ class Ethnicity(object):
 
 		if len(_words) == 2:
 			_name, _surname = _words
+			
 		elif len(_words) == 1:
+
 			_name = _words.pop()
 			_surname = None
 		else:
@@ -279,6 +304,9 @@ class Ethnicity(object):
 
 		if _name and len(_name) < 2:
 			_name = None
+
+		if _surname and len(_surname) < 2:
+			_surname = None
 
 		return (_name, _surname)
 	
@@ -292,6 +320,13 @@ class Ethnicity(object):
 		if not st:
 			return None
 
+		# remove salutation if any sneaked in
+
+		st = ' '.join([w for w in st.split() if w not in self.SALUTS]).strip()
+
+		if not st:
+			return None
+
 		_name, _surname = self._split_name_surname(st)
 
 		name_ethnicities = self.search_names(_name) if _name else set()
@@ -300,6 +335,10 @@ class Ethnicity(object):
 		race = self.search_race(_surname) if _surname else None
 
 		ethnicity = None
+
+		# resolve scenario english firs name - chinese last name
+		if ('anglo-saxon' in name_ethnicities) and ('chinese' in surname_ethnicities):
+			return 'anglo-saxon'
 
 		# if both name and surname point to a specific ethnicity
 		_ns = name_ethnicities & surname_ethnicities
@@ -331,7 +370,7 @@ class Ethnicity(object):
 			return name_ethnicities
 
 		# if name may be multiple ethnicities, race can help to decide
-		if race:
+		if race and (race in self.RACE_TO_ETHN):
 			_sr = surname_ethnicities & self.RACE_TO_ETHN[race]
 			if len(_sr) == 1:
 				return _sr
@@ -357,8 +396,8 @@ class Ethnicity(object):
 			ethnicities_ = []
 			for name in s:
 				ethnicities_.append(self._get(name))
-			return pd.DataFrame({'name': [name.lower() for name in s], 
-								'ethnicity': ["|".join(list(_)) if _ else '---' for _ in ethnicities_]})
+			return pd.DataFrame({'Name': [name.title() for name in s], 
+									'Ethnicity': ["|".join(list(_)) if _ else '---' for _ in ethnicities_]})
 				
 
 if __name__ == '__main__':
