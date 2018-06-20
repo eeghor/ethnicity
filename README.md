@@ -1,9 +1,11 @@
 # ethnicity
 Get ethnicity from name.  At the moment, we cover 
+* anglo-saxon 
+* chinese 
 * indian (excluding islamic states)
 * japanese 
 * greek 
-* Iranian
+* iranian
 * arabic
 * turkish
 * thai 
@@ -13,11 +15,9 @@ Get ethnicity from name.  At the moment, we cover
 * samoan
 * hawaiian 
 * khmer (cambodian)
-* chinese 
 * korean 
 * polish 
 * fijian 
-* anglo-saxon 
 * german 
 * hispanic (spanish and mexican)
 * portuguese (portuguese and brazilian)
@@ -66,4 +66,6 @@ which should give you a pandas data frame as below
 4      Nima Al Hassan       arabic
 5  Christiano Ronaldo   portuguese
 6       Parisa Karimi      iranian
+7          Lisa Bowen  anglo-saxon
+8         Jessica Hui      chinese
 ```

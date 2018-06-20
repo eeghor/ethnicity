@@ -338,7 +338,10 @@ class Ethnicity(object):
 
 		# resolve scenario english firs name - chinese last name
 		if ('anglo-saxon' in name_ethnicities) and ('chinese' in surname_ethnicities):
-			return 'anglo-saxon'
+			if 'anglo-saxon' not in surname_ethnicities:
+				return {'chinese'}
+			else:
+				return {'anglo-saxon'}
 
 		# if both name and surname point to a specific ethnicity
 		_ns = name_ethnicities & surname_ethnicities
@@ -404,6 +407,7 @@ if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	test_names = ['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan','christiano ronaldo', 'parisa karimi']
+	test_names = ['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan',
+						'christiano ronaldo', 'parisa karimi', 'lisa bowen', 'jessica hui']
 
 	print(e.get(test_names))
