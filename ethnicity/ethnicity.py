@@ -87,7 +87,7 @@ class Ethnicity(object):
 						}
 
 		self.SURNAME_NOT_ENOUGH = {'anglo-saxon', 'german'}
-		self.NAME_IS_ENOUGH = {'arabic', 'japanese', 'fijian', 'samoan', 'hawaiian'}
+		self.NAME_IS_ENOUGH = {'arabic', 'japanese', 'fijian', 'samoan', 'hawaiian', 'chinese'}
 
 	def __readtext(self, file):
 		"""
@@ -181,7 +181,7 @@ class Ethnicity(object):
 		# dictionary for surname endings
 		for l in self.ETHNIC_SURNAMES_U:
 			for n in self.ETHNIC_SURNAMES_U[l]:
-				for s in range(3,6):  # note: 3,4,5
+				for s in range(4,6):  # note: 4,5
 					_ = n[-s:]
 					self.ETHNIC_ENDINGS_U[_[0]][_].update(self.ETHNIC_SURNAMES_U[l][n])
 	
@@ -391,15 +391,29 @@ class Ethnicity(object):
 		return ethnicity
 
 	def get(self, s):
+		"""
+		s can be a string or a list
+		"""
 
+		# when s is a string
 		if isinstance(s, str):
+
 			_ = self._get(s)
+
 			return "|".join(list(_)) if _ else '---'
+
+		# and in case s is a list or names
 		elif isinstance(s, list):
+
 			ethnicities_ = []
 			for name in s:
 				ethnicities_.append(self._get(name))
-			return pd.DataFrame({'Name': [name.title() for name in s], 
+
+			# previously the names were included in the resulting data frame unchanged;
+			# however, we'd prefer to get rid of various junk symbols or punctuation so now 
+			# the names are cleaned
+
+			return pd.DataFrame({'Name': [self._normalize(name).title() if name else '' for name in s], 
 									'Ethnicity': ["|".join(list(_)) if _ else '---' for _ in ethnicities_]})
 				
 
@@ -407,7 +421,7 @@ if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	test_names = ['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan',
-						'christiano ronaldo', 'parisa karimi', 'lisa bowen', 'jessica hui']
+	test_names = ['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan?', '',
+						'christiano ronaldo', 'parisa karimi,', 'lisa bowen', 'jessica,,hui']
 
 	print(e.get(test_names))
