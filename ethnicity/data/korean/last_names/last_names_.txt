@@ -14,8 +14,6 @@ baik
 bak
 ban
 bang
-bay
-bean
 been
 beom
 bhan
@@ -437,7 +435,6 @@ seonwu
 seul
 seung
 sheem
-sheen
 shi
 shim
 shin

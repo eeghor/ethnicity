@@ -8,6 +8,24 @@ import time
 from collections import defaultdict, Counter
 from string import ascii_lowercase
 
+def isok(f):
+
+	
+
+	def wrapper(*args, **kwargs):
+
+		print(f'{f.__name__}...', end='')
+
+		out =  f(*args, **kwargs)
+
+		print('ok')
+
+		return out
+
+	return wrapper
+
+
+
 class Ethnicity(object):
 
 	"""
@@ -35,7 +53,7 @@ class Ethnicity(object):
 
 		self.SALUTS = 'mr ms miss mrs mister'.split()
 		
-		self.SEPARATORS = re.compile(r'[-,_/().]')
+		self.SEPARATORS = re.compile(r'[-,_/().:;#@~=&+]')
 
 		# folder to store created dictionaries (for testing purposes)
 		self.TEMP_DIR = os.path.join(os.path.curdir, 'temp')
@@ -114,7 +132,7 @@ class Ethnicity(object):
 
 		json.dump(dic_, open(file, 'w'))
 
-
+	@isok
 	def make_dicts(self, refresh=True):
 		"""
 		create a dictionary like this:
@@ -245,7 +263,7 @@ class Ethnicity(object):
 			return None
 
 		# split and join again in case there are any stray white spaces
-		_st = ' '.join(_st.split())
+		_st = ' '.join(_st.split()).strip()
 	 
 		return _st
 
@@ -259,6 +277,9 @@ class Ethnicity(object):
 		"""
 		find word in the surname dictionary (arranged by letter)
 		"""
+		if word.startswith('mc'):
+			return {'anglo-saxon'}
+
 		return self.ETHNIC_SURNAMES_U[word[0]].get(word, set())
 
 	def search_surname_endings(self, word):
@@ -297,15 +318,16 @@ class Ethnicity(object):
 
 			_name = _words.pop()
 			_surname = None
+
 		else:
 			# ignore the middle
 			_name = _words[0]
 			_surname = _words[-1]
 
-		if _name and len(_name) < 2:
+		if _name and (len(_name) < 2 or (len(_name) > 30)):
 			_name = None
 
-		if _surname and len(_surname) < 2:
+		if _surname and (len(_surname) < 2 or (len(_surname) > 30)):
 			_surname = None
 
 		return (_name, _surname)
@@ -330,7 +352,9 @@ class Ethnicity(object):
 		_name, _surname = self._split_name_surname(st)
 
 		name_ethnicities = self.search_names(_name) if _name else set()
+
 		surname_ethnicities = self.search_surnames(_surname) if _surname else set()
+
 		surname_ending_ethnicities = self.search_surname_endings(_surname) if _surname else set()
 		race = self.search_race(_surname) if _surname else None
 
@@ -342,6 +366,17 @@ class Ethnicity(object):
 				return {'chinese'}
 			else:
 				return {'anglo-saxon'}
+
+		# italian last name is enough
+		if 'italian' in surname_ethnicities:
+			return {'italian'}
+
+		# chinese last name is enough
+		if 'chinese' in surname_ethnicities:
+			return {'chinese'}
+
+		if ('khmer' in name_ethnicities) and ('anglo-saxon' not in name_ethnicities):
+			return {'khmer'}
 
 		# if both name and surname point to a specific ethnicity
 		_ns = name_ethnicities & surname_ethnicities
@@ -413,7 +448,7 @@ class Ethnicity(object):
 			# however, we'd prefer to get rid of various junk symbols or punctuation so now 
 			# the names are cleaned
 
-			return pd.DataFrame({'Name': [self._normalize(name).title() if name else '' for name in s], 
+			return pd.DataFrame({'Name': [_.title() if (_ and len(_) < 62) else '' for _ in [self._normalize(name) for name in s]], 
 									'Ethnicity': ["|".join(list(_)) if _ else '---' for _ in ethnicities_]})
 				
 
@@ -421,7 +456,7 @@ if __name__ == '__main__':
 
 	e = Ethnicity().make_dicts()
 
-	test_names = ['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan?', '',
-						'christiano ronaldo', 'parisa karimi,', 'lisa bowen', 'jessica,,hui']
+	test_names = ['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan', 'tomasz bolowski',
+						'christiano ronaldo', 'parisa karimi,', 'lisa bowen', 'melissa chan']
 
 	print(e.get(test_names))

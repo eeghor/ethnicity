@@ -1,27 +1,28 @@
 # ethnicity
-Get ethnicity from name.  At the moment, we cover 
-* anglo-saxon 
-* chinese 
-* indian (excluding islamic states)
-* japanese 
-* greek 
-* iranian
-* arabic
-* turkish
-* thai 
-* vietnamese 
-* south slavic (serbian, croatian, bosnian, slovenian )
-* italian 
-* samoan
-* hawaiian 
-* khmer (cambodian)
-* korean 
-* polish 
-* fijian 
-* german 
-* hispanic (spanish and mexican)
-* portuguese (portuguese and brazilian)
-* russian
+Get ethnicity from name.  Currently, we cover the following ethnicities:
+
+* Anglo-Saxon
+* Arabic
+* Chinese
+* Fijian
+* German
+* Greek
+* Hawaiian
+* Hispanic  (Spanish and Mexican)
+* Indian  (excluding islamic states)
+* Iranian
+* Italian
+* Japanese
+* Khmer (Cambodian)
+* Korean
+* Polish
+* Portuguese  (Portuguese and Brazilian)
+* Russian
+* Samoan
+* South-Slavic (Serbian, Croatian, Bosnian, Slovenian)
+* Thai
+* Turkish
+* Vietnamese
 
 ## Data Sources
 * [Surnames by race (the US Census data)](https://www.census.gov/topics/population/genealogy/data/2010_surnames.html)  
@@ -45,6 +46,7 @@ Get ethnicity from name.  At the moment, we cover
 * [Most common surnames in Morocco](http://forebears.co.uk/morocco)
 * [Most common Palestinian Surnames](http://mepeace.org/forum/topics/palestinian-tribes-clans-and)
 * [Most common surnames in Kuwait](http://forebears.co.uk/kuwait)
+
 ## Installation
 ```
 pip3 install ethnicity
@@ -52,20 +54,22 @@ pip3 install ethnicity
 
 ## Usage
 ```
-e = Ethnicity().make_dicts()
+# initialize and create dictionaries
+e = Ethnicity().make_dicts()  
 
-print(e.get(['emele kuoi', 'andrew miller', 'peter', 'andrey', 'nima al hassan', 'christiano ronaldo', 'parisa karimi']))
-```
-which should give you a pandas data frame as below
-```
+# apply to a list of names
+e.get(['emele kuoi', 'andrew miller', 'peter', 'andrey',  'nima al hassan', 'tomasz bolowski', 'christiano ronaldo', 'parisa karimi,', 'lisa bowen', 'melissa chan'])
+
+# which gives you a pandas dataframe as below
                  Name    Ethnicity
 0          Emele Kuoi       fijian
 1       Andrew Miller  anglo-saxon
 2               Peter          ---
 3              Andrey      russian
 4      Nima Al Hassan       arabic
-5  Christiano Ronaldo   portuguese
-6       Parisa Karimi      iranian
-7          Lisa Bowen  anglo-saxon
-8         Jessica Hui      chinese
+5     Tomasz Bolowski       polish
+6  Christiano Ronaldo   portuguese
+7       Parisa Karimi      iranian
+8          Lisa Bowen  anglo-saxon
+9        Melissa Chan      chinese
 ```
