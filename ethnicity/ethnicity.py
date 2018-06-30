@@ -9,21 +9,17 @@ from collections import defaultdict, Counter
 from string import ascii_lowercase
 
 def isok(f):
+	"""
+	decorator to comment on what method is running
+	"""
 
-	
+	print(f'running {f.__name__}...')
 
 	def wrapper(*args, **kwargs):
 
-		print(f'{f.__name__}...', end='')
-
-		out =  f(*args, **kwargs)
-
-		print('ok')
-
-		return out
+		return f(*args, **kwargs)
 
 	return wrapper
-
 
 
 class Ethnicity(object):
@@ -32,9 +28,9 @@ class Ethnicity(object):
 	get ethnicity from name
 	"""
 	
-	def __init__(self, verbose=False):
+	def __init__(self):
 
-		self.VERBOSE = verbose
+		self.MAXSTRLEN = 62
 
 		self.DATADIR = os.path.join(os.path.dirname(__file__), 'data')
 
@@ -152,8 +148,7 @@ class Ethnicity(object):
 						self.__writetext(self.__readtext(f), f)
 					d[e][_] = list(self.__readtext(f))
 				except:
-					if self.VERBOSE:
-						print(f'warning: can\'t find {e} {_}!')		
+					pass	
 
 
 		self.ETHNIC_NAMES_U = defaultdict(lambda: defaultdict(set))
@@ -427,7 +422,8 @@ class Ethnicity(object):
 
 	def get(self, s):
 		"""
-		s can be a string or a list
+		get ethnicity; s can be a string or a list
+		returns a string or a data frame
 		"""
 
 		# when s is a string
@@ -448,7 +444,7 @@ class Ethnicity(object):
 			# however, we'd prefer to get rid of various junk symbols or punctuation so now 
 			# the names are cleaned
 
-			return pd.DataFrame({'Name': [_.title() if (_ and len(_) < 62) else '' for _ in [self._normalize(name) for name in s]], 
+			return pd.DataFrame({'Name': [_.title() if (_ and len(_) < self.MAXSTRLEN) else '' for _ in [self._normalize(name) for name in s]], 
 									'Ethnicity': ["|".join(list(_)) if _ else '---' for _ in ethnicities_]})
 				
 

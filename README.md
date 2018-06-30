@@ -46,6 +46,7 @@ Get ethnicity from name.  Currently, we cover the following ethnicities:
 * [Most common surnames in Morocco](http://forebears.co.uk/morocco)
 * [Most common Palestinian Surnames](http://mepeace.org/forum/topics/palestinian-tribes-clans-and)
 * [Most common surnames in Kuwait](http://forebears.co.uk/kuwait)
+* [Most common surnames in Europe](https://en.wikipedia.org/wiki/List_of_most_common_surnames_in_Europe)
 
 ## Installation
 ```
