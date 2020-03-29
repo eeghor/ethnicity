@@ -55,6 +55,8 @@ pip3 install ethnicity
 
 ## Usage
 ```
+from ethnicity import Ethnicity
+
 # initialize and create dictionaries
 e = Ethnicity().make_dicts()  
 
